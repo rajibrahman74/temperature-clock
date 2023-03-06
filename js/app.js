@@ -16,11 +16,23 @@ const loadTemperature = async (city) => {
 // Display temperature data in UI
 
 const displayTemperature = (data) => {
-  console.log(data.main.temp);
+  console.log(data.weather[0].main);
 
-  const temperature = document.getElementById("temperature");
-  temperature.innerText = data.main.temp;
+  // call the set inner text by id, common function 
+  setInnerTextById ("temperature", data.main.temp);
+
+  // call the set inner text common fuction for set city temperature condition
+  setInnerTextById ("condition", data.weather[0].main);
 };
+
+
+
+// common function for set inner text by id
+
+const setInnerTextById = (id, text) => {
+    const temperature = document.getElementById(id);
+    temperature.innerText = text;
+}
 
 
 
